@@ -22,7 +22,7 @@ title: Harsh Vardhan
 email: harsh.vardhan.611@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Optimising LLM for AI agents.
-url: "https://harsh-vardhhan.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://harsh-vardhhan.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: harsh_vardhhan
 github_username:  harsh-vardhhan
