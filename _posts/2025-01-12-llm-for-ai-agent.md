@@ -55,6 +55,8 @@ LIMIT 5;
 
 It can be observed that Qwen's 3B coder model is able to generate SQL queries as precisely as Phi's 14B model because it is trained specifically for coding. Hence, you don't need to opt for larger models here. However, it can also be seen that the Qwen2.5:3B model failed to achieve this because it is a general model. Building a good AI agent is all about testing and iterating from the smallest to the largest parameter sizes, along with searching for models that are specifically trained for your domain problem.
 
+Does  **qwen2.5-coder:3b** is the LLM I have finalised? for now, yes. Currently I am still developing the AI agent and as long as the LLM fulfills the criteria. But if there's any time in future I can find a better model (smaller parametter & better accuracy), there's no doubt I'll swap it with new one.
+
 # Configurable AI agent
 
 I have a code in my AI agent which allows me to switch between [Groq](https://console.groq.com/docs/models) and [Ollama](https://ollama.com/library) models easily.

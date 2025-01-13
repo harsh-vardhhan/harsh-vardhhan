@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-13T14:50:37+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Harsh Vardhan</title><subtitle>Optimising LLM for AI agents.</subtitle><entry><title type="html">Which LLM to choose for building AI agent?</title><link href="http://localhost:4000/2025/01/12/llm-for-ai-agent.html" rel="alternate" type="text/html" title="Which LLM to choose for building AI agent?" /><published>2025-01-12T00:00:00+05:30</published><updated>2025-01-12T00:00:00+05:30</updated><id>http://localhost:4000/2025/01/12/llm-for-ai-agent</id><content type="html" xml:base="http://localhost:4000/2025/01/12/llm-for-ai-agent.html"><![CDATA[<h1 id="which-is-the-right-model">Which is the right model?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-13T16:39:59+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Harsh Vardhan</title><subtitle>Optimising LLM for AI agents.</subtitle><entry><title type="html">Which LLM to choose for building AI agent?</title><link href="http://localhost:4000/2025/01/12/llm-for-ai-agent.html" rel="alternate" type="text/html" title="Which LLM to choose for building AI agent?" /><published>2025-01-12T00:00:00+05:30</published><updated>2025-01-12T00:00:00+05:30</updated><id>http://localhost:4000/2025/01/12/llm-for-ai-agent</id><content type="html" xml:base="http://localhost:4000/2025/01/12/llm-for-ai-agent.html"><![CDATA[<h1 id="which-is-the-right-model">Which is the right model?</h1>
 <p>The right model (LLM) is the one that helps your AI agents achieves your task. But the real question you should be asking to yourself is</p>
 
 <blockquote>
-  <p>which is the smallest possible model that helps my AI agent acheive it’s goals?</p>
+  <p>which is the smallest possible model that helps AI agent acheive it’s goals?</p>
 </blockquote>
 
 <p>why does it matter? well the smaller paramter size of the model, the cheaper it will be to prompt. There are high chances that a model like <a href="https://ollama.com/library/llama3.3:70b">Llama 3.3:70B</a> will give more accurate responses but the cost of running a model this large could go significantly high as prmopt increases.</p>
@@ -47,6 +47,8 @@ LIMIT 5;
 </code></pre></div></div>
 
 <p>It can be observed that Qwen’s 3B coder model is able to generate SQL queries as precisely as Phi’s 14B model because it is trained specifically for coding. Hence, you don’t need to opt for larger models here. However, it can also be seen that the Qwen2.5:3B model failed to achieve this because it is a general model. Building a good AI agent is all about testing and iterating from the smallest to the largest parameter sizes, along with searching for models that are specifically trained for your domain problem.</p>
+
+<p>Does  <strong>qwen2.5-coder:3b</strong> is the LLM I have finalised? for now, yes. Currently I am still developing the AI agent and as long as the LLM fulfills the criteria. But if there’s any time in future I can find a better model (smaller parametter &amp; better accuracy), there’s no doubt I’ll swap it with new one.</p>
 
 <h1 id="configurable-ai-agent">Configurable AI agent</h1>
 

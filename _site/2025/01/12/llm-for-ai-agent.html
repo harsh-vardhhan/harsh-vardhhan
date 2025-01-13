@@ -51,7 +51,7 @@
 <p>The right model (LLM) is the one that helps your AI agents achieves your task. But the real question you should be asking to yourself is</p>
 
 <blockquote>
-  <p>which is the smallest possible model that helps my AI agent acheive it’s goals?</p>
+  <p>which is the smallest possible model that helps AI agent acheive it’s goals?</p>
 </blockquote>
 
 <p>why does it matter? well the smaller paramter size of the model, the cheaper it will be to prompt. There are high chances that a model like <a href="https://ollama.com/library/llama3.3:70b">Llama 3.3:70B</a> will give more accurate responses but the cost of running a model this large could go significantly high as prmopt increases.</p>
@@ -96,6 +96,8 @@ LIMIT 5;
 </code></pre></div></div>
 
 <p>It can be observed that Qwen’s 3B coder model is able to generate SQL queries as precisely as Phi’s 14B model because it is trained specifically for coding. Hence, you don’t need to opt for larger models here. However, it can also be seen that the Qwen2.5:3B model failed to achieve this because it is a general model. Building a good AI agent is all about testing and iterating from the smallest to the largest parameter sizes, along with searching for models that are specifically trained for your domain problem.</p>
+
+<p>Does  <strong>qwen2.5-coder:3b</strong> is the LLM I have finalised? for now, yes. Currently I am still developing the AI agent and as long as the LLM fulfills the criteria. But if there’s any time in future I can find a better model (smaller parametter &amp; better accuracy), there’s no doubt I’ll swap it with new one.</p>
 
 <h1 id="configurable-ai-agent">Configurable AI agent</h1>
 
