@@ -7,8 +7,8 @@
 <meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="Testing Multiple LLMs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Welcome" />
-<meta property="og:description" content="Welcome" />
+<meta name="description" content="Configurable Agent" />
+<meta property="og:description" content="Configurable Agent" />
 <link rel="canonical" href="http://localhost:4000/2025/01/12/testing-multiple-llm.html" />
 <meta property="og:url" content="http://localhost:4000/2025/01/12/testing-multiple-llm.html" />
 <meta property="og:site_name" content="Harsh Vardhan" />
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Testing Multiple LLMs" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-01-12T00:00:00+05:30","datePublished":"2025-01-12T00:00:00+05:30","description":"Welcome","headline":"Testing Multiple LLMs","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2025/01/12/testing-multiple-llm.html"},"url":"http://localhost:4000/2025/01/12/testing-multiple-llm.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-01-12T00:00:00+05:30","datePublished":"2025-01-12T00:00:00+05:30","description":"Configurable Agent","headline":"Testing Multiple LLMs","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2025/01/12/testing-multiple-llm.html"},"url":"http://localhost:4000/2025/01/12/testing-multiple-llm.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Harsh Vardhan" /></head>
 <body><header class="site-header" role="banner">
@@ -32,7 +32,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -47,11 +47,28 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <h1 id="welcome">Welcome</h1>
+    <h1 id="configurable-agent">Configurable Agent</h1>
 
-<p><strong>Hello world</strong>, this is my first Jekyll blog post.</p>
+<p>I have a code in my AI agent which allows me to switch between <a href="https://console.groq.com/docs/models">Groq</a> and <a href="https://ollama.com/library">Ollama</a> models easily.</p>
 
-<p>I hope you like it!</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if model == 'GROQ':
+    # running on cloud
+    llm = ChatGroq(
+        temperature=1,
+        model_name="phi4",
+        groq_api_key=os.environ["GROQ_API_KEY"]
+    )
+elif model == 'OLLAMA':
+    # running locally
+    llm = ChatOllama(
+        model="qwen2.5-coder:3b",
+        temperature=1,
+    )
+</code></pre></div></div>
+
+<p>Why this setup feels crucial while developing AI agents?</p>
+
+<p>Building AI agents is all about testing and optimising for an LLM but at times there no specific LLM that works best for your use case. Even if it’s getting the task done, it could be that model size (parameters) is too large. You want to know which is the smallest possible model that can get the task done precisely for your AI agent.</p>
 
   </div><a class="u-url" href="/2025/01/12/testing-multiple-llm.html" hidden></a>
 </article>

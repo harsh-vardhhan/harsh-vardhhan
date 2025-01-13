@@ -1,5 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-12T22:16:57+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Harsh Vardhan</title><subtitle>Optimising LLM for AI agents.</subtitle><entry><title type="html">Testing Multiple LLMs</title><link href="http://localhost:4000/2025/01/12/testing-multiple-llm.html" rel="alternate" type="text/html" title="Testing Multiple LLMs" /><published>2025-01-12T00:00:00+05:30</published><updated>2025-01-12T00:00:00+05:30</updated><id>http://localhost:4000/2025/01/12/testing-multiple-llm</id><content type="html" xml:base="http://localhost:4000/2025/01/12/testing-multiple-llm.html"><![CDATA[<h1 id="welcome">Welcome</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-13T12:07:50+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Harsh Vardhan</title><subtitle>Optimising LLM for AI agents.</subtitle><entry><title type="html">Testing Multiple LLMs</title><link href="http://localhost:4000/2025/01/12/testing-multiple-llm.html" rel="alternate" type="text/html" title="Testing Multiple LLMs" /><published>2025-01-12T00:00:00+05:30</published><updated>2025-01-12T00:00:00+05:30</updated><id>http://localhost:4000/2025/01/12/testing-multiple-llm</id><content type="html" xml:base="http://localhost:4000/2025/01/12/testing-multiple-llm.html"><![CDATA[<h1 id="configurable-agent">Configurable Agent</h1>
 
-<p><strong>Hello world</strong>, this is my first Jekyll blog post.</p>
+<p>I have a code in my AI agent which allows me to switch between <a href="https://console.groq.com/docs/models">Groq</a> and <a href="https://ollama.com/library">Ollama</a> models easily.</p>
 
-<p>I hope you like it!</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Welcome]]></summary></entry></feed>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if model == 'GROQ':
+    # running on cloud
+    llm = ChatGroq(
+        temperature=1,
+        model_name="phi4",
+        groq_api_key=os.environ["GROQ_API_KEY"]
+    )
+elif model == 'OLLAMA':
+    # running locally
+    llm = ChatOllama(
+        model="qwen2.5-coder:3b",
+        temperature=1,
+    )
+</code></pre></div></div>
+
+<p>Why this setup feels crucial while developing AI agents?</p>
+
+<p>Building AI agents is all about testing and optimising for an LLM but at times there no specific LLM that works best for your use case. Even if it’s getting the task done, it could be that model size (parameters) is too large. You want to know which is the smallest possible model that can get the task done precisely for your AI agent.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Configurable Agent]]></summary></entry></feed>
