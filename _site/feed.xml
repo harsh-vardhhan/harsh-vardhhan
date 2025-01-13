@@ -1,4 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-13T12:07:50+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Harsh Vardhan</title><subtitle>Optimising LLM for AI agents.</subtitle><entry><title type="html">Testing Multiple LLMs</title><link href="http://localhost:4000/2025/01/12/testing-multiple-llm.html" rel="alternate" type="text/html" title="Testing Multiple LLMs" /><published>2025-01-12T00:00:00+05:30</published><updated>2025-01-12T00:00:00+05:30</updated><id>http://localhost:4000/2025/01/12/testing-multiple-llm</id><content type="html" xml:base="http://localhost:4000/2025/01/12/testing-multiple-llm.html"><![CDATA[<h1 id="configurable-agent">Configurable Agent</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-13T14:50:37+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Harsh Vardhan</title><subtitle>Optimising LLM for AI agents.</subtitle><entry><title type="html">Which LLM to choose for building AI agent?</title><link href="http://localhost:4000/2025/01/12/llm-for-ai-agent.html" rel="alternate" type="text/html" title="Which LLM to choose for building AI agent?" /><published>2025-01-12T00:00:00+05:30</published><updated>2025-01-12T00:00:00+05:30</updated><id>http://localhost:4000/2025/01/12/llm-for-ai-agent</id><content type="html" xml:base="http://localhost:4000/2025/01/12/llm-for-ai-agent.html"><![CDATA[<h1 id="which-is-the-right-model">Which is the right model?</h1>
+<p>The right model (LLM) is the one that helps your AI agents achieves your task. But the real question you should be asking to yourself is</p>
+
+<blockquote>
+  <p>which is the smallest possible model that helps my AI agent acheive it’s goals?</p>
+</blockquote>
+
+<p>why does it matter? well the smaller paramter size of the model, the cheaper it will be to prompt. There are high chances that a model like <a href="https://ollama.com/library/llama3.3:70b">Llama 3.3:70B</a> will give more accurate responses but the cost of running a model this large could go significantly high as prmopt increases.</p>
+
+<p>So the right way is to start testing your AI agent with the smallest possile model which can deliver similar accuracy.</p>
+
+<h1 id="can-small-models-compete-with-large-models">Can small models compete with large models?</h1>
+<p>Answer to this question lies in in the context you ask. Probably if you ask can smallers models over all smarter than larger models then answer is no but smaller models can be equally or even more smart at times for certain use case. That’s often cause the models were trained/fine-tuned for that particular use-case.</p>
+
+<p>In my own RAG application, I have tested different models with same prompts to test the capability. Here the RAG application fetches scraped data of Google Flights.</p>
+
+<p><strong>Prompt</strong>: What is the cheapest flight from Hanoi to New Delhi?</p>
+
+<p><strong>❌ <a href="https://ollama.com/library/qwen2.5:3b">qwen2.5:3b</a></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT date, origin, destination, price_inr, flightType 
+FROM flights 
+WHERE origin = 'Hanoi' AND destination = 'New Delhi' 
+ORDER BY date ASC 
+LIMIT 5
+</code></pre></div></div>
+
+<p><strong>✅ <a href="https://ollama.com/library/qwen2.5-coder">qwen2.5-coder:3b</a></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT date, origin, destination, price_inr, flightType 
+FROM flights 
+WHERE origin = 'Hanoi' AND destination = 'New Delhi' 
+ORDER BY price_inr ASC 
+LIMIT 5;
+</code></pre></div></div>
+
+<p><strong>❌ <a href="https://ollama.com/library/llama3.2:3b">llama3.2:3b</a></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT date, origin, destination, price_inr, flightType 
+FROM flights 
+WHERE price_inr = ( SELECT MIN(price_inr) FROM flights );
+</code></pre></div></div>
+
+<p><strong>✅ <a href="https://ollama.com/library/phi4:14b">phi4:14b</a></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT date, origin, destination, price_inr, flightType 
+FROM flights 
+WHERE destination = 'New Delhi' AND origin = 'Hanoi' 
+ORDER BY price_inr ASC 
+LIMIT 5;
+</code></pre></div></div>
+
+<p>It can be observed that Qwen’s 3B coder model is able to generate SQL queries as precisely as Phi’s 14B model because it is trained specifically for coding. Hence, you don’t need to opt for larger models here. However, it can also be seen that the Qwen2.5:3B model failed to achieve this because it is a general model. Building a good AI agent is all about testing and iterating from the smallest to the largest parameter sizes, along with searching for models that are specifically trained for your domain problem.</p>
+
+<h1 id="configurable-ai-agent">Configurable AI agent</h1>
 
 <p>I have a code in my AI agent which allows me to switch between <a href="https://console.groq.com/docs/models">Groq</a> and <a href="https://ollama.com/library">Ollama</a> models easily.</p>
 
@@ -15,8 +65,4 @@ elif model == 'OLLAMA':
         model="qwen2.5-coder:3b",
         temperature=1,
     )
-</code></pre></div></div>
-
-<p>Why this setup feels crucial while developing AI agents?</p>
-
-<p>Building AI agents is all about testing and optimising for an LLM but at times there no specific LLM that works best for your use case. Even if it’s getting the task done, it could be that model size (parameters) is too large. You want to know which is the smallest possible model that can get the task done precisely for your AI agent.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Configurable Agent]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[Which is the right model? The right model (LLM) is the one that helps your AI agents achieves your task. But the real question you should be asking to yourself is]]></summary></entry></feed>

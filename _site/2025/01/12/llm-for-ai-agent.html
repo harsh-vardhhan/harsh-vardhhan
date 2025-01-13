@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Which LLM to choose for building AI agent? | Harsh Vardhan</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Which LLM to choose for building AI agent?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Which is the right model? The right model (LLM) is the one that helps your AI agents achieves your task. But the real question you should be asking to yourself is" />
+<meta property="og:description" content="Which is the right model? The right model (LLM) is the one that helps your AI agents achieves your task. But the real question you should be asking to yourself is" />
+<link rel="canonical" href="http://localhost:4000/2025/01/12/llm-for-ai-agent.html" />
+<meta property="og:url" content="http://localhost:4000/2025/01/12/llm-for-ai-agent.html" />
+<meta property="og:site_name" content="Harsh Vardhan" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-01-12T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Which LLM to choose for building AI agent?" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-01-12T00:00:00+05:30","datePublished":"2025-01-12T00:00:00+05:30","description":"Which is the right model? The right model (LLM) is the one that helps your AI agents achieves your task. But the real question you should be asking to yourself is","headline":"Which LLM to choose for building AI agent?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2025/01/12/llm-for-ai-agent.html"},"url":"http://localhost:4000/2025/01/12/llm-for-ai-agent.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Harsh Vardhan" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Harsh Vardhan</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Which LLM to choose for building AI agent?</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2025-01-12T00:00:00+05:30" itemprop="datePublished">Jan 12, 2025
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="which-is-the-right-model">Which is the right model?</h1>
+<p>The right model (LLM) is the one that helps your AI agents achieves your task. But the real question you should be asking to yourself is</p>
+
+<blockquote>
+  <p>which is the smallest possible model that helps my AI agent acheive it’s goals?</p>
+</blockquote>
+
+<p>why does it matter? well the smaller paramter size of the model, the cheaper it will be to prompt. There are high chances that a model like <a href="https://ollama.com/library/llama3.3:70b">Llama 3.3:70B</a> will give more accurate responses but the cost of running a model this large could go significantly high as prmopt increases.</p>
+
+<p>So the right way is to start testing your AI agent with the smallest possile model which can deliver similar accuracy.</p>
+
+<h1 id="can-small-models-compete-with-large-models">Can small models compete with large models?</h1>
+<p>Answer to this question lies in in the context you ask. Probably if you ask can smallers models over all smarter than larger models then answer is no but smaller models can be equally or even more smart at times for certain use case. That’s often cause the models were trained/fine-tuned for that particular use-case.</p>
+
+<p>In my own RAG application, I have tested different models with same prompts to test the capability. Here the RAG application fetches scraped data of Google Flights.</p>
+
+<p><strong>Prompt</strong>: What is the cheapest flight from Hanoi to New Delhi?</p>
+
+<p><strong>❌ <a href="https://ollama.com/library/qwen2.5:3b">qwen2.5:3b</a></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT date, origin, destination, price_inr, flightType 
+FROM flights 
+WHERE origin = 'Hanoi' AND destination = 'New Delhi' 
+ORDER BY date ASC 
+LIMIT 5
+</code></pre></div></div>
+
+<p><strong>✅ <a href="https://ollama.com/library/qwen2.5-coder">qwen2.5-coder:3b</a></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT date, origin, destination, price_inr, flightType 
+FROM flights 
+WHERE origin = 'Hanoi' AND destination = 'New Delhi' 
+ORDER BY price_inr ASC 
+LIMIT 5;
+</code></pre></div></div>
+
+<p><strong>❌ <a href="https://ollama.com/library/llama3.2:3b">llama3.2:3b</a></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT date, origin, destination, price_inr, flightType 
+FROM flights 
+WHERE price_inr = ( SELECT MIN(price_inr) FROM flights );
+</code></pre></div></div>
+
+<p><strong>✅ <a href="https://ollama.com/library/phi4:14b">phi4:14b</a></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT date, origin, destination, price_inr, flightType 
+FROM flights 
+WHERE destination = 'New Delhi' AND origin = 'Hanoi' 
+ORDER BY price_inr ASC 
+LIMIT 5;
+</code></pre></div></div>
+
+<p>It can be observed that Qwen’s 3B coder model is able to generate SQL queries as precisely as Phi’s 14B model because it is trained specifically for coding. Hence, you don’t need to opt for larger models here. However, it can also be seen that the Qwen2.5:3B model failed to achieve this because it is a general model. Building a good AI agent is all about testing and iterating from the smallest to the largest parameter sizes, along with searching for models that are specifically trained for your domain problem.</p>
+
+<h1 id="configurable-ai-agent">Configurable AI agent</h1>
+
+<p>I have a code in my AI agent which allows me to switch between <a href="https://console.groq.com/docs/models">Groq</a> and <a href="https://ollama.com/library">Ollama</a> models easily.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if model == 'GROQ':
+    # running on cloud
+    llm = ChatGroq(
+        temperature=1,
+        model_name="phi4",
+        groq_api_key=os.environ["GROQ_API_KEY"]
+    )
+elif model == 'OLLAMA':
+    # running locally
+    llm = ChatOllama(
+        model="qwen2.5-coder:3b",
+        temperature=1,
+    )
+</code></pre></div></div>
+
+  </div><a class="u-url" href="/2025/01/12/llm-for-ai-agent.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Harsh Vardhan</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Harsh Vardhan</li><li><a class="u-email" href="mailto:harsh.vardhan.611@gmail.com">harsh.vardhan.611@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/harsh-vardhhan"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">harsh-vardhhan</span></a></li><li><a href="https://www.twitter.com/harsh_vardhhan"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">harsh_vardhhan</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Optimising LLM for AI agents.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
