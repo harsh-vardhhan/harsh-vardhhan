@@ -66,34 +66,34 @@
 <p><strong>Prompt</strong>: What is the cheapest flight from Hanoi to New Delhi?</p>
 
 <p><strong>❌ <a href="https://ollama.com/library/qwen2.5:3b">qwen2.5:3b</a></strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT date, origin, destination, price_inr, flightType 
-FROM flights 
-WHERE origin = 'Hanoi' AND destination = 'New Delhi' 
-ORDER BY date ASC 
-LIMIT 5
-</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="nb">date</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">price_inr</span><span class="p">,</span> <span class="n">flightType</span> 
+<span class="k">FROM</span> <span class="n">flights</span> 
+<span class="k">WHERE</span> <span class="n">origin</span> <span class="o">=</span> <span class="s1">'Hanoi'</span> <span class="k">AND</span> <span class="n">destination</span> <span class="o">=</span> <span class="s1">'New Delhi'</span> 
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">date</span> <span class="k">ASC</span> 
+<span class="k">LIMIT</span> <span class="mi">5</span></code></pre></figure>
 
 <p><strong>✅ <a href="https://ollama.com/library/qwen2.5-coder">qwen2.5-coder:3b</a></strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT date, origin, destination, price_inr, flightType 
-FROM flights 
-WHERE origin = 'Hanoi' AND destination = 'New Delhi' 
-ORDER BY price_inr ASC 
-LIMIT 5;
-</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="nb">date</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">price_inr</span><span class="p">,</span> <span class="n">flightType</span> 
+<span class="k">FROM</span> <span class="n">flights</span> 
+<span class="k">WHERE</span> <span class="n">origin</span> <span class="o">=</span> <span class="s1">'Hanoi'</span> <span class="k">AND</span> <span class="n">destination</span> <span class="o">=</span> <span class="s1">'New Delhi'</span> 
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">price_inr</span> <span class="k">ASC</span> 
+<span class="k">LIMIT</span> <span class="mi">5</span><span class="p">;</span></code></pre></figure>
 
 <p><strong>❌ <a href="https://ollama.com/library/llama3.2:3b">llama3.2:3b</a></strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT date, origin, destination, price_inr, flightType 
-FROM flights 
-WHERE price_inr = ( SELECT MIN(price_inr) FROM flights );
-</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="nb">date</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">price_inr</span><span class="p">,</span> <span class="n">flightType</span> 
+<span class="k">FROM</span> <span class="n">flights</span> 
+<span class="k">WHERE</span> <span class="n">price_inr</span> <span class="o">=</span> <span class="p">(</span> <span class="k">SELECT</span> <span class="k">MIN</span><span class="p">(</span><span class="n">price_inr</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">flights</span> <span class="p">);</span></code></pre></figure>
 
 <p><strong>✅ <a href="https://ollama.com/library/phi4:14b">phi4:14b</a></strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT date, origin, destination, price_inr, flightType 
-FROM flights 
-WHERE destination = 'New Delhi' AND origin = 'Hanoi' 
-ORDER BY price_inr ASC 
-LIMIT 5;
-</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="nb">date</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">price_inr</span><span class="p">,</span> <span class="n">flightType</span> 
+<span class="k">FROM</span> <span class="n">flights</span> 
+<span class="k">WHERE</span> <span class="n">destination</span> <span class="o">=</span> <span class="s1">'New Delhi'</span> <span class="k">AND</span> <span class="n">origin</span> <span class="o">=</span> <span class="s1">'Hanoi'</span> 
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">price_inr</span> <span class="k">ASC</span> 
+<span class="k">LIMIT</span> <span class="mi">5</span><span class="p">;</span></code></pre></figure>
 
 <p>It can be observed that Qwen’s 3B coder model is able to generate SQL queries as precisely as Phi’s 14B model because it is trained specifically for coding. Hence, you don’t need to opt for larger models here. However, it can also be seen that the Qwen2.5:3B model failed to achieve this because it is a general model. Building a good AI agent is all about testing and iterating from the smallest to the largest parameter sizes, along with searching for models that are specifically trained for your domain problem.</p>
 
@@ -103,20 +103,19 @@ LIMIT 5;
 
 <p>I have a code in my AI agent which allows me to switch between <a href="https://console.groq.com/docs/models">Groq</a> and <a href="https://ollama.com/library">Ollama</a> models easily.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if model == 'GROQ':
-    # running on cloud
-    llm = ChatGroq(
-        temperature=1,
-        model_name="phi4",
-        groq_api_key=os.environ["GROQ_API_KEY"]
-    )
-elif model == 'OLLAMA':
-    # running locally
-    llm = ChatOllama(
-        model="qwen2.5-coder:3b",
-        temperature=1,
-    )
-</code></pre></div></div>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">model</span> <span class="o">==</span> <span class="sh">'</span><span class="s">GROQ</span><span class="sh">'</span><span class="p">:</span>
+    <span class="c1"># running on cloud
+</span>    <span class="n">llm</span> <span class="o">=</span> <span class="nc">ChatGroq</span><span class="p">(</span>
+        <span class="n">temperature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">model_name</span><span class="o">=</span><span class="sh">"</span><span class="s">phi4</span><span class="sh">"</span><span class="p">,</span>
+        <span class="n">groq_api_key</span><span class="o">=</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="sh">"</span><span class="s">GROQ_API_KEY</span><span class="sh">"</span><span class="p">]</span>
+    <span class="p">)</span>
+<span class="k">elif</span> <span class="n">model</span> <span class="o">==</span> <span class="sh">'</span><span class="s">OLLAMA</span><span class="sh">'</span><span class="p">:</span>
+    <span class="c1"># running locally
+</span>    <span class="n">llm</span> <span class="o">=</span> <span class="nc">ChatOllama</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">qwen2.5-coder:3b</span><span class="sh">"</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span></code></pre></figure>
 
   </div><a class="u-url" href="/2025/01/12/llm-for-ai-agent.html" hidden></a>
 </article>

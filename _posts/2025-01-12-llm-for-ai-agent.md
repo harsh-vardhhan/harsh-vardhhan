@@ -20,38 +20,38 @@ In my own RAG application, I have tested different models with same prompts to t
 **Prompt**: What is the cheapest flight from Hanoi to New Delhi?
 
 **❌ [qwen2.5:3b](https://ollama.com/library/qwen2.5:3b)**
-```
+{% highlight sql %}
 SELECT date, origin, destination, price_inr, flightType 
 FROM flights 
 WHERE origin = 'Hanoi' AND destination = 'New Delhi' 
 ORDER BY date ASC 
 LIMIT 5
-```
+{% endhighlight %}
 
 **✅ [qwen2.5-coder:3b](https://ollama.com/library/qwen2.5-coder)**
-```
+{% highlight sql %}
 SELECT date, origin, destination, price_inr, flightType 
 FROM flights 
 WHERE origin = 'Hanoi' AND destination = 'New Delhi' 
 ORDER BY price_inr ASC 
 LIMIT 5;
-```
+{% endhighlight %}
 
 **❌ [llama3.2:3b](https://ollama.com/library/llama3.2:3b)**
-```
+{% highlight sql %}
 SELECT date, origin, destination, price_inr, flightType 
 FROM flights 
 WHERE price_inr = ( SELECT MIN(price_inr) FROM flights );
-```
+{% endhighlight %}
 
 **✅ [phi4:14b](https://ollama.com/library/phi4:14b)**
-```
+{% highlight sql %}
 SELECT date, origin, destination, price_inr, flightType 
 FROM flights 
 WHERE destination = 'New Delhi' AND origin = 'Hanoi' 
 ORDER BY price_inr ASC 
 LIMIT 5;
-```
+{% endhighlight %}
 
 It can be observed that Qwen's 3B coder model is able to generate SQL queries as precisely as Phi's 14B model because it is trained specifically for coding. Hence, you don't need to opt for larger models here. However, it can also be seen that the Qwen2.5:3B model failed to achieve this because it is a general model. Building a good AI agent is all about testing and iterating from the smallest to the largest parameter sizes, along with searching for models that are specifically trained for your domain problem.
 
@@ -62,7 +62,7 @@ Does  **qwen2.5-coder:3b** is the LLM I have finalised? for now, yes. Currently
 I have a code in my AI agent which allows me to switch between [Groq](https://console.groq.com/docs/models) and [Ollama](https://ollama.com/library) models easily.
 
 
-```
+{% highlight python %}
 if model == 'GROQ':
     # running on cloud
     llm = ChatGroq(
@@ -76,4 +76,4 @@ elif model == 'OLLAMA':
         model="qwen2.5-coder:3b",
         temperature=1,
     )
-```
+{% endhighlight %}
