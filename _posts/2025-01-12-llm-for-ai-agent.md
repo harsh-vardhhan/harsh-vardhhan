@@ -6,7 +6,7 @@ title:  "Which LLM to choose for building AI agent?"
 # Which is the right model?
 The right model (LLM) is the one that helps your AI agents achieves your task. But the real question you should be asking to yourself is
 
-> which is the smallest possible model that helps my AI agent acheive it's goals?
+> which is the smallest possible model that helps AI agent acheive it's goals?
 
 why does it matter? well the smaller paramter size of the model, the cheaper it will be to prompt. There are high chances that a model like [Llama 3.3:70B](https://ollama.com/library/llama3.3:70b) will give more accurate responses but the cost of running a model this large could go significantly high as prmopt increases.
 
